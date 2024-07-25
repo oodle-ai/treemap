@@ -395,12 +395,10 @@ func testOutOfBoundsForwardIterationNext(t *testing.T, tr *TreeMap[int, string])
 	it := tr.Iterator()
 	for ; it.Valid(); it.Next() {
 	}
-	defer func() {
-		if r := recover(); r == nil {
-			t.Error("should have panicked!")
-		}
-	}()
-	it.Next()
+	err := it.Next()
+	if err == nil {
+		t.Error("should return error")
+	}
 }
 
 func testOutOfBoundsForwardIterationPrev(t *testing.T, tr *TreeMap[int, string]) {
@@ -410,12 +408,10 @@ func testOutOfBoundsForwardIterationPrev(t *testing.T, tr *TreeMap[int, string])
 	tr.Set(3, "d")
 	tr.Set(4, "e")
 	it := tr.Iterator()
-	defer func() {
-		if r := recover(); r == nil {
-			t.Error("should have panicked!")
-		}
-	}()
-	it.Prev()
+	err := it.Prev()
+	if err == nil {
+		t.Error("should return error")
+	}
 }
 
 func testOutOfBoundsReverseIterationNext(t *testing.T, tr *TreeMap[int, string]) {
@@ -427,12 +423,10 @@ func testOutOfBoundsReverseIterationNext(t *testing.T, tr *TreeMap[int, string])
 	it := tr.Reverse()
 	for ; it.Valid(); it.Next() {
 	}
-	defer func() {
-		if r := recover(); r == nil {
-			t.Error("should have panicked!")
-		}
-	}()
-	it.Next()
+	err := it.Next()
+	if err == nil {
+		t.Error("should return error")
+	}
 }
 
 func testOutOfBoundsReverseIterationPrev(t *testing.T, tr *TreeMap[int, string]) {
@@ -442,12 +436,10 @@ func testOutOfBoundsReverseIterationPrev(t *testing.T, tr *TreeMap[int, string])
 	tr.Set(3, "d")
 	tr.Set(4, "e")
 	it := tr.Reverse()
-	defer func() {
-		if r := recover(); r == nil {
-			t.Error("should have panicked!")
-		}
-	}()
-	it.Prev()
+	err := it.Prev()
+	if err == nil {
+		t.Error("should return error")
+	}
 }
 
 func testRangeSingle(t *testing.T, tr *TreeMap[int, string]) {

@@ -1,4 +1,4 @@
-module github.com/igrmk/treemap/v2
+module github.com/oodle-ai/treemap/v2
 
 go 1.18
 
